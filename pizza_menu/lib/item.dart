@@ -46,7 +46,7 @@ class Item extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    "\$${pizza.price}",
+                    pizza.soldOut ? "Sold Out": "\$${pizza.price}",
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
