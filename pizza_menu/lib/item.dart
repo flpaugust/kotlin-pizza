@@ -15,10 +15,15 @@ class Item extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                "images/${pizza.photoName}",
-                width: 100,
-                height: 100,
+              child: ColorFiltered(
+                colorFilter: pizza.soldOut
+                    ? ColorFilter.mode(Colors.grey, BlendMode.saturation)
+                    : ColorFilter.mode(Colors.transparent, BlendMode.saturation),
+                child: Image.asset(
+                  "images/${pizza.photoName}",
+                  width: 100,
+                  height: 100,
+                ),
               ),
             ),
             SizedBox(
@@ -46,7 +51,7 @@ class Item extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    pizza.soldOut ? "Sold Out": "\$${pizza.price}",
+                    pizza.soldOut ? "Sold Out" : "\$${pizza.price}",
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
